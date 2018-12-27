@@ -15,7 +15,7 @@ fold test.upgrade "Test db upgrade"
 cd incremental_upgrade
 cp ../tests/mmex_0970.mmb upgrade_test.mmb
 for sql in `ls database_version_*.sql | sort -n -t_ -k3`; do
-  echo - $sql
+  echo -n "$sql "
   sqlite3 upgrade_test.mmb <$sql
   sqlite3 upgrade_test.mmb 'pragma integrity_check;'
 done
